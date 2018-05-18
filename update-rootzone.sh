@@ -10,5 +10,6 @@ wget -nv -O /etc/bind/db.root.new -4 -- "ftp://ftp.internic.net/domain/named.cac
 cd /etc/bind
 mv db.root db.root.old
 mv db.root.new db.root
-rndc reload
-
+if [[ "${1-}" != "--skip-reload" ]]; then
+    rndc reload
+fi

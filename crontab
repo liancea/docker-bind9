@@ -1,0 +1,8 @@
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# update rootzone once a month (1st, 03:15h)
+15 3 1 * * root /usr/local/bin/update-rootzone.sh >/dev/stderr 2>&1
+
+# write binary journal to zone file daily (03:22h)
+22 3 * * * root /usr/bin/rndc sync >/dev/stderr 2>&1
